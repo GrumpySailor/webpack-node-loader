@@ -7,10 +7,10 @@ module.exports = exports = function (content) {
   }
   const filename = path.parse(this.resourcePath).base
   this.emitFile(filename, content)
-  const filepath = loaderUtils.interpolateName(this, '[name].[ext]', { context: this.context })
+  const filepath = loaderUtils.stringifyRequest(this, this.resourcePath)
   return `
     try {
-      global.process.dlopen(module, ${filepath})
+      module.exports = __non_webpack_require__(${filepath})
     } catch (error) {
       throw new Error (\`Cannot open ${filepath}: \${error}\`)
     }
