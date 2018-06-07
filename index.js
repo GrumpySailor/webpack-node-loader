@@ -1,4 +1,4 @@
-const { stringifyRequest } = require('loader-utils')
+const loaderUtils = require('loader-utils')
 const path = require('path')
 
 module.exports = exports = function (content) {
@@ -7,7 +7,7 @@ module.exports = exports = function (content) {
   }
   const filename = path.parse(this.resourcePath).base
   this.emitFile(filename, content)
-  const filepath = stringifyRequest(this, this.resourcePath)
+  const filepath = loaderUtils.interpolateName(this, '[name].[ext]', { context: this.context })
   return `
     try {
       global.process.dlopen(module, ${filepath})
