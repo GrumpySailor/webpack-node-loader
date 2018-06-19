@@ -1,6 +1,7 @@
 # @grumpy/webpack-node-loader
 
-A zero config Webpack loader for loading `.node` files and more.
+A zero config Webpack loader for loading `.node` files,
+uses [\_\_non_webpack_require__](https://webpack.js.org/api/module-variables/#__non_webpack_require__-webpack-specific-) benind the scenes.
 
 ## Example:
 ```js
