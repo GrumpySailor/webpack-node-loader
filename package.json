@@ -1,6 +1,6 @@
 {
   "name": "@grumpy/webpack-node-loader",
-  "version": "0.0.1-alpha",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/GrumpySailor/webpack-node-loader"
@@ -8,5 +8,15 @@
   "main": "index.js",
   "dependencies": {
     "loader-utils": "^1.1.0"
-  }
+  },
+  "keywords": [
+    "electron",
+    "import",
+    "loader",
+    "node",
+    "relative",
+    "require",
+    "webpack"
+  ],
+  "license": "MIT"
 }
