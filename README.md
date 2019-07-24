@@ -1,27 +1,40 @@
 # @grumpy/webpack-node-loader
 
-A zero config Webpack loader for loading `.node` files,
-uses [\_\_non_webpack_require__](https://webpack.js.org/api/module-variables/#__non_webpack_require__-webpack-specific-) benind the scenes.
+A zero config Webpack loader for loading `.node` files.
 
-## Example:
+## Installing
+Run the following command in the project folder to install the package:
+```
+npm install --save-dev @grumpy/webpack-node-loader
+```
+
+Add the following rule to your webpack config:
 ```js
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.node$/,
-        use: '@grumpy/webpack-node-loader'
-      }
-    ]
+{
+  test: /\.node$/,
+  loader: '@grumpy/webpack-node-loader'
+}
+```
+## Troubleshooting
+Debugging can be enabled by setting the webpack `mode` to `'development'` or setting the `debug` option to `true`.
+```js
+{
+  test: /\.node$/,
+  loader: '@grumpy/webpack-node-loader',
+  options: {
+    debug: true
   }
 }
 ```
 
-## Usage in Electron with Web Workers
+When using `.node` files in electron make sure to enable node integration in the web preferences. Before you do this make sure you familiarize yourself with the Electron [Security Recommendations](https://github.com/electron/electron/blob/master/docs/tutorial/security.md#2-do-not-enable-nodejs-integration-for-remote-content)
+
+Example:
 ```js
-new BrowserWindow({
+{
   webPreferences: {
+    nodeIntegration: true,
     nodeIntegrationInWorker: true
   }
-})
+}
 ```
